@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CollegeController;
+use App\Http\Controllers\SignupController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,5 +24,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/protected', function(Request $request){
         return response()->json(['message' => "Backend fetched successfully"], 200);
     });
-    // more endpoints ...
+    // Signup form api routes
+    Route::get('/getcountries', [CollegeController::class, 'getCountries']);
+    Route::get('/getdepartments', [SignupController::class, 'getDepartments']);
+    Route::get('/getdesignations', [SignupController::class, 'getDesignations']);
+    Route::get('/getstates/{country}', [CollegeController::class, 'getStatesByCountry']);
+    Route::get('/getcolleges/{country}/{state}', [CollegeController::class, 'getCollegesByState']);
 });

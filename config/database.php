@@ -63,6 +63,20 @@ return [
             ]) : [],
         ],
 
+        'college_database' => [
+            'driver' => env('College_DB_CONNECTION', 'mysql'),
+            'host' => env('College_DB_HOST', '127.0.0.1'),
+            'port' => env('College_DB_PORT', '3306'),
+            'database' => env('College_DB_DATABASE', 'forge'),
+            'username' => env('College_DB_USERNAME', 'forge'),
+            'password' => env('College_DB_PASSWORD', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
