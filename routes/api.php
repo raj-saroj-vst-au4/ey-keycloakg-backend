@@ -21,13 +21,21 @@ Route::get('/token', function(Request $request){
 });
 
 Route::group(['middleware' => 'auth:api'], function () {
-    Route::post('/protected', function(Request $request){
-        return response()->json(['message' => "Backend fetched successfully"], 200);
-    });
+
     // Signup form api routes
     Route::get('/getcountries', [CollegeController::class, 'getCountries']);
     Route::get('/getdepartments', [SignupController::class, 'getDepartments']);
     Route::get('/getdesignations', [SignupController::class, 'getDesignations']);
     Route::get('/getstates/{country}', [CollegeController::class, 'getStatesByCountry']);
     Route::get('/getcolleges/{country}/{state}', [CollegeController::class, 'getCollegesByState']);
+
+    //signup form submit route
+    Route::post('/regsubmit', [SignupController::class, 'storeRegistration']);
+
+    //All routes that require user to complete signup
+    Route::group(['middleware' => 'EnsureSignedUp'], function () {
+        Route::post('/protected', function(Request $request){
+            return response()->json(['message' => "Backend fetched successfully"], 200);
+        });
+    });
 });

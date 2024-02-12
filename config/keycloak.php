@@ -3,7 +3,7 @@
 return [
     'realm_public_key' => env('KEYCLOAK_REALM_PUBLIC_KEY', null),
 
-    'load_user_from_database' => env('KEYCLOAK_LOAD_USER_FROM_DATABASE', true),
+    'load_user_from_database' => env('KEYCLOAK_LOAD_USER_FROM_DATABASE', false),
 
     'user_provider_custom_retrieve_method' => null,
 
