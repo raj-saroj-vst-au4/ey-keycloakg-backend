@@ -29,6 +29,6 @@ class EnsureSignedUp
             return $next($request);
         }
         // User is not signed up, return a 403 Forbidden response
-        return response()->json(['error' => 'Forbidden'], 403);
+        return response()->json(['error' => 'Forbidden: user not signedup'], 403);
     }
 }

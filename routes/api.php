@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     //All routes that require user to complete signup
     Route::group(['middleware' => 'ensuresignedup'], function () {
         Route::post('/protected', function(Request $request) {
-            return response()->json(['message' => "Backend fetched successfully"], 200);
+            return response()->json(['message' => "user has signedup"], 200);
         });
         Route::post('/fetchelsicolleges', [CollegeController::class, 'getElsiColleges']);
     });
