@@ -21,6 +21,7 @@ class SignupController extends Controller
         $designations = Designation::all();
         return response()->json($designations);
     }
+
     public function storeRegistration(Request $request){
         try {
             $validated = $request->validate([

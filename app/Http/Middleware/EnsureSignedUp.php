@@ -2,9 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class EnsureSignedUp
 {
@@ -13,12 +15,20 @@ class EnsureSignedUp
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        if ($request->user() && !$request->user()->signupcomplete) {
-            return redirect()->route('complete.signup');
-        }
+        $token = json_decode(Auth::token());
+        $tokenusername = $token->preferred_username;
+        $user = Cache::remember('user:'.$tokenusername, 20, function () use ($tokenusername) {
+            $user = User::where('username', $tokenusername)->first();
+            return $user && $user->signupcomplete ? $user : null;
+        });
 
-        return $next($request);
+        if ($user && $user->signupcomplete) {
+            // User is authenticated and signed up, allow the request to proceed
+            return $next($request);
+        }
+        // User is not signed up, return a 403 Forbidden response
+        return response()->json(['error' => 'Forbidden'], 403);
     }
 }

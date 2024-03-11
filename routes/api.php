@@ -16,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// required for csrf token verification
 Route::get('/token', function(Request $request){
     return response()->json(['message' => "Token"], 200);
 });
+
 
 Route::group(['middleware' => 'auth:api'], function () {
 
@@ -33,9 +35,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/regsubmit', [SignupController::class, 'storeRegistration']);
 
     //All routes that require user to complete signup
-    Route::group(['middleware' => 'EnsureSignedUp'], function () {
-        Route::post('/protected', function(Request $request){
+    Route::group(['middleware' => 'ensuresignedup'], function () {
+        Route::post('/protected', function(Request $request) {
             return response()->json(['message' => "Backend fetched successfully"], 200);
         });
+        Route::post('/fetchelsicolleges', [CollegeController::class, 'getElsiColleges']);
     });
 });

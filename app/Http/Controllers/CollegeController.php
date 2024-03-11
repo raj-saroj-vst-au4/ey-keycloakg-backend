@@ -36,4 +36,12 @@ class CollegeController extends Controller
 
         return response()->json(['colleges' => $colleges]);
     }
+
+    public function getElsiColleges(){
+        $colleges = College::on('college_database')
+        ->where('IS_eLSI', 1)
+        ->orderby("college_name")->paginate(10);
+
+        return response()->json(['colleges' => $colleges]);
+    }
 }
