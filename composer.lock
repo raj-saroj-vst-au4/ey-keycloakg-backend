@@ -4,8 +4,221 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4c385c06aee8d7ded79d131dd4d411d8",
+    "content-hash": "c2e9fa83d55e41cef5a0aa16c0078ec5",
     "packages": [
+        {
+            "name": "berthott/laravel-crudable",
+            "version": "3.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/berthott/laravel-crudable.git",
+                "reference": "2db7d3a4de5e1c0bade4a76dc3eb0c1b2328161f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/berthott/laravel-crudable/zipball/2db7d3a4de5e1c0bade4a76dc3eb0c1b2328161f",
+                "reference": "2db7d3a4de5e1c0bade4a76dc3eb0c1b2328161f",
+                "shasum": ""
+            },
+            "require": {
+                "berthott/laravel-scopeable": "^3.0.0",
+                "berthott/laravel-targetable": "^3.0",
+                "haydenpierce/class-finder": "^0.4.3",
+                "spatie/laravel-query-builder": "^5.0"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^3.3",
+                "orchestra/testbench": "^8.0",
+                "phpunit/phpunit": "^10.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "berthott\\Crudable\\CrudableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "berthott\\Crudable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Bladt",
+                    "email": "berthott@web.de"
+                }
+            ],
+            "description": "Laravel Helper for CRUD Resources",
+            "support": {
+                "issues": "https://github.com/berthott/laravel-crudable/issues",
+                "source": "https://github.com/berthott/laravel-crudable/tree/3.0.5"
+            },
+            "time": "2023-10-16T11:40:42+00:00"
+        },
+        {
+            "name": "berthott/laravel-keycloak-users",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/berthott/laravel-keycloak-users.git",
+                "reference": "c0b018a2291399e1a1f41d7dec7c447dfabe92f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/berthott/laravel-keycloak-users/zipball/c0b018a2291399e1a1f41d7dec7c447dfabe92f8",
+                "reference": "c0b018a2291399e1a1f41d7dec7c447dfabe92f8",
+                "shasum": ""
+            },
+            "require": {
+                "berthott/laravel-crudable": "^3.0",
+                "guzzlehttp/guzzle": "^7.3",
+                "haizad/laravel-keycloak-admin": "^1.9"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^3.3",
+                "orchestra/testbench": "^8.0",
+                "phpunit/phpunit": "^10.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "berthott\\KeycloakUsers\\KeycloakUsersServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "berthott\\KeycloakUsers\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Bladt",
+                    "email": "berthott@web.de"
+                }
+            ],
+            "description": "Laravel user administration in Keycloak",
+            "support": {
+                "issues": "https://github.com/berthott/laravel-keycloak-users/issues",
+                "source": "https://github.com/berthott/laravel-keycloak-users/tree/3.0.3"
+            },
+            "time": "2023-08-15T12:49:56+00:00"
+        },
+        {
+            "name": "berthott/laravel-scopeable",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/berthott/laravel-scopeable.git",
+                "reference": "67cf9fd76a7da6b72f9533fc24c204a567bbe745"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/berthott/laravel-scopeable/zipball/67cf9fd76a7da6b72f9533fc24c204a567bbe745",
+                "reference": "67cf9fd76a7da6b72f9533fc24c204a567bbe745",
+                "shasum": ""
+            },
+            "require": {
+                "haydenpierce/class-finder": "^0.4.3"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^3.3",
+                "orchestra/testbench": "^8.0",
+                "phpunit/phpunit": "^10.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "berthott\\Scopeable\\ScopeableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "berthott\\Scopeable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Bladt",
+                    "email": "berthott@web.de"
+                }
+            ],
+            "description": "Laravel helper for permission scopes",
+            "support": {
+                "issues": "https://github.com/berthott/laravel-scopeable/issues",
+                "source": "https://github.com/berthott/laravel-scopeable/tree/3.0.0"
+            },
+            "time": "2023-02-16T08:09:34+00:00"
+        },
+        {
+            "name": "berthott/laravel-targetable",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/berthott/laravel-targetable.git",
+                "reference": "5ffd616b57241b0b8809e739ab3622f7541b88fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/berthott/laravel-targetable/zipball/5ffd616b57241b0b8809e739ab3622f7541b88fd",
+                "reference": "5ffd616b57241b0b8809e739ab3622f7541b88fd",
+                "shasum": ""
+            },
+            "require": {
+                "haydenpierce/class-finder": "^0.4.3"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^3.3",
+                "orchestra/testbench": "^8.0",
+                "phpunit/phpunit": "^10.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "berthott\\Crudable\\CrudableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "berthott\\Targetable\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Bladt",
+                    "email": "berthott@web.de"
+                }
+            ],
+            "description": "Laravel Helper for targeting classes by their traits",
+            "support": {
+                "issues": "https://github.com/berthott/laravel-targetable/issues",
+                "source": "https://github.com/berthott/laravel-targetable/tree/3.0.3"
+            },
+            "time": "2023-06-30T08:54:31+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.11.0",
@@ -1107,6 +1320,102 @@
                 }
             ],
             "time": "2023-12-03T19:50:20+00:00"
+        },
+        {
+            "name": "haizad/laravel-keycloak-admin",
+            "version": "1.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/haizad/laravel-keycloak-admin.git",
+                "reference": "4d481fc19a49ff7b217e7b8da19449ef99208950"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/haizad/laravel-keycloak-admin/zipball/4d481fc19a49ff7b217e7b8da19449ef99208950",
+                "reference": "4d481fc19a49ff7b217e7b8da19449ef99208950",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelKeycloakAdmin\\KeycloakAdminServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelKeycloakAdmin\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "mnikoei",
+                    "email": "mohsen.nikoei@gmail.com",
+                    "homepage": "https://github.com/Mnikoei",
+                    "role": "developer creator"
+                },
+                {
+                    "name": "Haizad",
+                    "email": "haizadannuar@gmail.com",
+                    "homepage": "https://github.com/haizad",
+                    "role": "contributing developer"
+                }
+            ],
+            "description": "Keycloak Admin Rest API for Laravel/Lumen",
+            "support": {
+                "source": "https://github.com/haizad/laravel-keycloak-admin/tree/1.9"
+            },
+            "time": "2021-02-04T07:50:18+00:00"
+        },
+        {
+            "name": "haydenpierce/class-finder",
+            "version": "0.4.4",
+            "source": {
+                "type": "git",
+                "url": "git@gitlab.com:hpierce1102/ClassFinder.git",
+                "reference": "94c602870ddf8d4fa2d67fb9bae637d88f9bd76e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/hpierce1102%2FClassFinder/repository/archive.zip?sha=94c602870ddf8d4fa2d67fb9bae637d88f9bd76e",
+                "reference": "94c602870ddf8d4fa2d67fb9bae637d88f9bd76e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "~9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HaydenPierce\\ClassFinder\\": "src/",
+                    "HaydenPierce\\ClassFinder\\UnitTest\\": "test/unit"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hayden Pierce",
+                    "email": "hayden@haydenpierce.com"
+                }
+            ],
+            "description": "A library that can provide of a list of classes in a given namespace",
+            "time": "2022-09-26T22:42:59+00:00"
         },
         {
             "name": "laravel/breeze",
@@ -3311,16 +3620,16 @@
         },
         {
             "name": "robsontenorio/laravel-keycloak-guard",
-            "version": "1.4.2",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/robsontenorio/laravel-keycloak-guard.git",
-                "reference": "042483a167bcdc74321dd49cb30b79c6531109bc"
+                "reference": "347a9693c1292f403fad65bb2b1d879e17838c4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robsontenorio/laravel-keycloak-guard/zipball/042483a167bcdc74321dd49cb30b79c6531109bc",
-                "reference": "042483a167bcdc74321dd49cb30b79c6531109bc",
+                "url": "https://api.github.com/repos/robsontenorio/laravel-keycloak-guard/zipball/347a9693c1292f403fad65bb2b1d879e17838c4e",
+                "reference": "347a9693c1292f403fad65bb2b1d879e17838c4e",
                 "shasum": ""
             },
             "require": {
@@ -3364,9 +3673,143 @@
             ],
             "support": {
                 "issues": "https://github.com/robsontenorio/laravel-keycloak-guard/issues",
-                "source": "https://github.com/robsontenorio/laravel-keycloak-guard/tree/1.4.2"
+                "source": "https://github.com/robsontenorio/laravel-keycloak-guard/tree/1.6.0"
             },
-            "time": "2023-04-27T12:41:47+00:00"
+            "time": "2024-04-25T11:07:49+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.16.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "ddf678e78d7f8b17e5cdd99c0c3413a4a6592e53"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/ddf678e78d7f8b17e5cdd99c0c3413a4a6592e53",
+                "reference": "ddf678e78d7f8b17e5cdd99c0c3413a4a6592e53",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.28|^10.0|^11.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^7.7|^8.0",
+                "pestphp/pest": "^1.22",
+                "phpunit/phpunit": "^9.5.24",
+                "spatie/pest-plugin-test-time": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.16.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-03-20T07:29:11+00:00"
+        },
+        {
+            "name": "spatie/laravel-query-builder",
+            "version": "5.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-query-builder.git",
+                "reference": "ff61a9ea32c5b55cbe63de8e3c6e35a201e6b746"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/ff61a9ea32c5b55cbe63de8e3c6e35a201e6b746",
+                "reference": "ff61a9ea32c5b55cbe63de8e3c6e35a201e6b746",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^9.0|^10.0",
+                "illuminate/http": "^9.0|^10.0",
+                "illuminate/support": "^9.0|^10.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.11"
+            },
+            "require-dev": {
+                "ext-json": "*",
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "^7.0|^8.0",
+                "pestphp/pest": "^1.20",
+                "phpunit/phpunit": "^9.6.11",
+                "spatie/invade": "^2.0",
+                "spatie/laravel-ray": "^1.28"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\QueryBuilder\\QueryBuilderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\QueryBuilder\\": "src",
+                    "Spatie\\QueryBuilder\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Vanderbist",
+                    "email": "alex@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easily build Eloquent queries from API requests",
+            "homepage": "https://github.com/spatie/laravel-query-builder",
+            "keywords": [
+                "laravel-query-builder",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-query-builder/issues",
+                "source": "https://github.com/spatie/laravel-query-builder"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2024-01-08T09:57:13+00:00"
         },
         {
             "name": "symfony/console",

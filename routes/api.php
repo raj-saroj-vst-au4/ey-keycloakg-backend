@@ -20,25 +20,32 @@ use Illuminate\Support\Facades\Route;
 Route::get('/token', function(Request $request){
     return response()->json(['message' => "Token"], 200);
 });
+// public form routes
+Route::get('/anon/getcountries', [CollegeController::class, 'getCountries']);
+Route::get('/anon/getstates/{country}', [CollegeController::class, 'getStatesByCountry']);
+Route::get('/anon/getcolleges/{country}/{state}', [CollegeController::class, 'getCollegesByState']);
+Route::get('/anon/getdesignations', [SignupController::class, 'getDesignations']);
 
-
+//keycloak guard protected api routes
 Route::group(['middleware' => 'auth:api'], function () {
 
     // Signup form api routes
     Route::get('/getcountries', [CollegeController::class, 'getCountries']);
-    Route::get('/getdepartments', [SignupController::class, 'getDepartments']);
-    Route::get('/getdesignations', [SignupController::class, 'getDesignations']);
     Route::get('/getstates/{country}', [CollegeController::class, 'getStatesByCountry']);
     Route::get('/getcolleges/{country}/{state}', [CollegeController::class, 'getCollegesByState']);
+    Route::get('/getdepartments', [SignupController::class, 'getDepartments']);
+    Route::get('/getdesignations', [SignupController::class, 'getDesignations']);
 
     //signup form submit route
     Route::post('/regsubmit', [SignupController::class, 'storeRegistration']);
 
-    //All routes that require user to complete signup
+    //All routes that require user to complete signup and all basic student access
     Route::group(['middleware' => 'ensuresignedup'], function () {
         Route::post('/protected', function(Request $request) {
-            return response()->json(['message' => "user has signedup"], 200);
+            return response()->json(['signup' => true], 200);
         });
-        Route::post('/fetchelsicolleges', [CollegeController::class, 'getElsiColleges']);
+        Route::group(['middleware' => 'iseyadmin'], function () {
+            Route::post('/fetchelsicolleges', [CollegeController::class, 'getElsiColleges']);
+        });
     });
 });

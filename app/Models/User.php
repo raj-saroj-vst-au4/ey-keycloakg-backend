@@ -24,7 +24,6 @@ class User extends Authenticatable
     ];
 
     public function profile(){
-        error_log("called profile");
         return $this->hasOne(Profile::class);
     }
 
