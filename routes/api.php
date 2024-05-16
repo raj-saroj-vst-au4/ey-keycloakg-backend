@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CollegeController;
 use App\Http\Controllers\SignupController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,8 @@ Route::group(['middleware' => 'auth:api'], function () {
         });
         Route::group(['middleware' => 'iseyadmin'], function () {
             Route::post('/fetchelsicolleges', [CollegeController::class, 'getElsiColleges']);
+            Route::post('/fetchelsiusers', [UserController::class, 'getElsiUsers']);
+            Route::put('/updatecollege/{id}/{field}', [CollegeController::class, 'putCollegeData']);
         });
     });
 });

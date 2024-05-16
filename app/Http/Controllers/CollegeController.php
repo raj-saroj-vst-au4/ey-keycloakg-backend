@@ -39,9 +39,21 @@ class CollegeController extends Controller
 
     public function getElsiColleges(){
         $colleges = College::on('college_database')
-        ->where('IS_eLSI', 1)
-        ->orderby("college_name")->paginate(10);
-
+        ->orderby("college_name")->get();
         return response()->json(['colleges' => $colleges]);
+    }
+
+    //function to update college data on database
+    public function putCollegeData(Request $request, $id, $field){
+        $college = College::on('college_database')->find($id);
+        $updateableFields = ['IS_eLSI', 'inauguration_date', 'IS_eFSI', 'eYIC_allowed', 'college_name', 'country', 'state', 'district', 'city', 'pincode', 'address','website', 'Remarks', 'labrank', 'grade', 'pay_proof', 'intent_letter'];
+        if(in_array($field, $updateableFields)){
+            $college->$field = $request->input($field);
+            $college->save();
+            return response()->json(['college' => $college], 200);
+        }
+        else{
+            return response()->json(['message' => 'Updation Error'], 400);
+        }
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Designation;
 use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class SignupController extends Controller
@@ -20,6 +21,11 @@ class SignupController extends Controller
     {
         $designations = Designation::all();
         return response()->json($designations);
+    }
+    public function getRole()
+    {
+        $user = Auth::user()->profile;
+        return response()->json($user);
     }
 
     public function storeRegistration(Request $request){
@@ -42,6 +48,7 @@ class SignupController extends Controller
 
                 $user->name = $request->name;
                 $user->email = $request->email;
+                $user->kcuid = $request->kcuid;
                 $user->username = $request->username;
                 $user->signupcomplete = true;
 
