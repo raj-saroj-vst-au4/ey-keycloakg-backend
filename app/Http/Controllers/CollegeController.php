@@ -46,7 +46,7 @@ class CollegeController extends Controller
     //function to update college data on database
     public function putCollegeData(Request $request, $id, $field){
         $college = College::on('college_database')->find($id);
-        $updateableFields = ['IS_eLSI', 'inauguration_date', 'IS_eFSI', 'eYIC_allowed', 'college_name', 'country', 'state', 'district', 'city', 'pincode', 'address','website', 'Remarks', 'labrank', 'grade', 'pay_proof', 'intent_letter'];
+        $updateableFields = ['IS_eLSI', 'inauguration_date', 'IS_eFSI', 'eYIC_allowed', 'college_name', 'country', 'state', 'district', 'city', 'pincode', 'address','website', 'Remarks', 'labrank', 'grade', 'reg_data', 'pay_proof', 'intent_letter'];
         if(in_array($field, $updateableFields)){
             $college->$field = $request->input($field);
             $college->save();
