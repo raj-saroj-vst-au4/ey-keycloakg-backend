@@ -21,6 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/token', function(Request $request){
     return response()->json(['message' => "Token"], 200);
 });
+Route::get('/env', function(Request $request){
+    $envVar = env('College_DB_HOST', 'nhi aya env var');
+    return response()->json(['message' => $envVar], 200);
+});
 // public form routes
 Route::get('/anon/getcountries', [CollegeController::class, 'getCountries']);
 Route::get('/anon/getstates/{country}', [CollegeController::class, 'getStatesByCountry']);
@@ -40,14 +44,17 @@ Route::group(['middleware' => 'auth:api'], function () {
     //signup form submit route
     Route::post('/regsubmit', [SignupController::class, 'storeRegistration']);
 
-    //All routes that require user to complete signup and all basic student access
+    //All routes that require user to complete signup
     Route::group(['middleware' => 'ensuresignedup'], function () {
         Route::post('/protected', function(Request $request) {
             return response()->json(['signup' => true], 200);
         });
+
+        // Admin routes
         Route::group(['middleware' => 'iseyadmin'], function () {
             Route::post('/fetchelsicolleges', [CollegeController::class, 'getElsiColleges']);
             Route::post('/fetchelsiusers', [UserController::class, 'getElsiUsers']);
+            Route::post('/createcollege', [CollegeController::class, 'addCollege']);
             Route::put('/updatecollege/{id}/{field}', [CollegeController::class, 'putCollegeData']);
         });
     });

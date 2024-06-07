@@ -5,13 +5,11 @@ services:
             context: .
             dockerfile: Dockerfile
         container_name: elsi_backend
+        ports:
+            - "9000:9000"
+        env_file:
+            - .env.prod
         restart: unless-stopped
         working_dir: /var/www/html
         volumes:
             - ./:/var/www/html
-        networks:
-            - app-network
-
-networks:
-    app-network:
-        driver: bridge
