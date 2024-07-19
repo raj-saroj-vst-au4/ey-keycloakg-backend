@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CollegeController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\LabController;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -50,12 +52,28 @@ Route::group(['middleware' => 'auth:api'], function () {
             return response()->json(['signup' => true], 200);
         });
 
-        // Admin routes
+        //Common "get-userdata" route for all users
+        Route::get('/getuserdata/{userid}', [UserController::class, 'getUserData']);
+        Route::get('/fetchworkshops', [EventController::class, 'getEvents']);
+
+        // Admin routes (Avoid using GET)
         Route::group(['middleware' => 'iseyadmin'], function () {
             Route::post('/fetchelsicolleges', [CollegeController::class, 'getElsiColleges']);
             Route::post('/fetchelsiusers', [UserController::class, 'getElsiUsers']);
             Route::post('/createcollege', [CollegeController::class, 'addCollege']);
             Route::put('/updatecollege/{id}/{field}', [CollegeController::class, 'putCollegeData']);
+
+            // Lab inaug routes
+            Route::post('/createlabinaugslot', [LabController::class, 'addLabInaugSlot']);
+            Route::post('/createworkshop', [EventController::class, 'addWorkshop']);
+        });
+
+        // Teacher lead routes
+
+
+        // Teacher routes
+        Route::group(['middleware' => 'isteacher'], function () {
+            // Route::post('/fetchelsicolleges', [CollegeController::class, 'getElsiColleges']);
         });
     });
 });
