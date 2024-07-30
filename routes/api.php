@@ -59,7 +59,9 @@ Route::group(['middleware' => 'auth:api'], function () {
         // Admin routes (Avoid using GET)
         Route::group(['middleware' => 'iseyadmin'], function () {
             Route::post('/fetchelsicolleges', [CollegeController::class, 'getElsiColleges']);
+            Route::post('/fetchcollege/{clgcode}', [CollegeController::class, 'getCollegeData']);
             Route::post('/fetchelsiusers', [UserController::class, 'getElsiUsers']);
+            Route::post('/modifyuser', [UserController::class, 'changeUserRole']);
             Route::post('/createcollege', [CollegeController::class, 'addCollege']);
             Route::put('/updatecollege/{id}/{field}', [CollegeController::class, 'putCollegeData']);
 

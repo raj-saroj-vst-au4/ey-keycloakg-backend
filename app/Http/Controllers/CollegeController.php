@@ -43,6 +43,11 @@ class CollegeController extends Controller
         return response()->json(['colleges' => $colleges]);
     }
 
+    public function getCollegeData($clgcode){
+        $collegeData = College::on('college_database')->where('clg_code', $clgcode)->get();
+        return response()->json(['data' => $collegeData]);
+    }
+
     //function to update college data on database
     public function putCollegeData(Request $request, $id, $field){
         $college = College::on('college_database')->find($id);

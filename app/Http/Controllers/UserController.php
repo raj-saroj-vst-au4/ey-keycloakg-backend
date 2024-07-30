@@ -25,4 +25,18 @@ class UserController extends Controller
     // Return the user data as JSON
     return response()->json(['data' => ['user' => $userdata, 'college'=> $collegedata]]);
     }
+
+
+    public function changeUserRole(Request $request){
+        $userdata = User::with('profile')->where('kcuid', $request->input('kcuid'))->first();
+        // Check if user data is found
+        if (!$userdata) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+        // Change column curr_user from table profile
+        $userdata->profile->curr_user = $request->input('new_role');
+        $userdata->profile->save();
+        // Return the user data as JSON
+        return response()->json(['data' => ['user' => $userdata]]);
+    }
 }

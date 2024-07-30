@@ -53,7 +53,7 @@ class EventController extends Controller
                 'status' => 'error',
                 'message' => $e->getMessage()
                 ]);
-                }
+            }
 
     }
 }
